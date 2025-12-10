@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Depends, status
+from fastapi import APIRouter, Request, Depends, status, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import selectinload
@@ -108,6 +108,10 @@ async def account_settings_page(request: Request, current_user: User = Depends(g
 @private_router.get("/admin/dashboard", tags=["Admin UI"])
 async def admin_dashboard(request: Request, current_user: User = Depends(get_current_admin_user)):
     """Renders the admin dashboard."""
+    if not current_user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Not authenticated")
+    if not current_user.is_admin:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Admin access required")
     return admin_templates.TemplateResponse("admin_dashboard.html", {"request": request, "user": current_user})
 
 @private_router.get("/admin/admin_users.html", tags=["Admin UI"])
