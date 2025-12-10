@@ -144,8 +144,15 @@ async def admin_generic_page(page: str, request: Request, current_user: User = D
 
     Maps requests like `/admin/transactions` -> `private/admin/admin_transactions.html`.
     If the template doesn't exist, return a 404.
+    
+    Note: /admin/dashboard is handled by the dedicated route above.
     """
     from jinja2 import TemplateNotFound
+    
+    # Skip dashboard - it's handled by the dedicated route
+    if page == "dashboard":
+        raise HTTPException(status_code=404, detail="Admin page 'dashboard' not found")
+    
     # Normalize requested page to a template filename
     template_name = page if page.endswith('.html') else f"admin_{page}.html"
     try:
