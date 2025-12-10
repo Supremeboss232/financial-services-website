@@ -10,7 +10,8 @@ from config import settings # Assuming config.py defines DATABASE_URL
 SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL
 
 engine = create_async_engine(
-    SQLALCHEMY_DATABASE_URL
+    SQLALCHEMY_DATABASE_URL,
+    connect_args={"ssl": "require"}
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=AsyncSession)
 

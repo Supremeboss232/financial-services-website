@@ -804,8 +804,8 @@ async def get_kyc_submission_details(
 @admin_router.post("/kyc-submissions/{submission_id}/approve")
 async def approve_kyc_submission_admin(
     submission_id: int,
-    payload: KYCApprovalRequest = Body(...),
-    db_session: SessionDep
+    db_session: SessionDep,
+    payload: KYCApprovalRequest = Body(...)
 ):
     """Approve a KYC submission with optional notes."""
     from models import KYCSubmission as DBKYCSubmission
@@ -836,8 +836,8 @@ async def approve_kyc_submission_admin(
 @admin_router.post("/kyc-submissions/{submission_id}/reject")
 async def reject_kyc_submission_admin(
     submission_id: int,
-    payload: KYCRejectionRequest = Body(...),
-    db_session: SessionDep
+    db_session: SessionDep,
+    payload: KYCRejectionRequest = Body(...)
 ):
     """Reject a KYC submission with reason."""
     from models import KYCSubmission as DBKYCSubmission

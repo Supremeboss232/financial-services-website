@@ -5,8 +5,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     # For async postgres, the URL should be in the format:
-    # "postgresql+asyncpg://user:password@host:port/dbname"
-    DATABASE_URL: str = "postgresql+asyncpg://neondb_owner:npg_y1lw7LhaEdep@ep-green-forest-ad3av5lu-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require"
+    # "postgresql+asyncpg://user:password@host:port/dbname"    
+    DATABASE_URL: str = "postgresql+asyncpg://neondb_owner:npg_y1lw7LhaEdep@ep-green-forest-ad3av5lu-pooler.c-2.us-east-1.aws.neon.tech/neondb"
     ALEMBIC_DATABASE_URL: str | None = None
     ADMIN_EMAIL: str = "admin@admin.com"
     ADMIN_PASSWORD: str = "admin123"
