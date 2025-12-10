@@ -1,0 +1,151 @@
+<!-- Sidebar Navigation - Consistent across all admin pages -->
+<!-- Usage: Include this in your admin pages for consistent navigation -->
+<nav class="sidebar-nav">
+    <div class="sidebar-header">
+        <h5 class="text-primary mb-3">
+            <i class="fas fa-cog"></i> Admin Panel
+        </h5>
+    </div>
+    <ul class="nav flex-column">
+        <!-- Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Dashboard' %}active{% endif %}" href="admin_dashboard.html">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+        </li>
+
+        <!-- User Management -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Users' %}active{% endif %}" href="admin_users.html">
+                <i class="fas fa-users"></i> Users
+            </a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_details.html">User Details</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_accounts.html">Accounts</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_assets.html">Assets</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_investments.html">Investments</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_loans.html">Loans</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_cards.html">Cards</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_user_wallets.html">Wallets</a>
+        </li>
+
+        <!-- KYC Management -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'KYC' %}active{% endif %}" href="admin_kyc.html">
+                <i class="fas fa-id-card"></i> KYC
+            </a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_kyc_list.html">KYC Requests</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_kyc_review.html">Review KYC</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_kyc_details.html">KYC Details</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_kyc_settings.html">KYC Settings</a>
+        </li>
+
+        <!-- Transactions & Funds -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Transactions' %}active{% endif %}" href="admin_transactions.html">
+                <i class="fas fa-exchange-alt"></i> Transactions
+            </a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_transaction_details.html">Transaction Details</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_pending_deposits.html">Pending Deposits</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_pending_withdrawals.html">Pending Withdrawals</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_submissions.html">Submissions</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_fund_user.html">Fund User</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_adjust_balance.html">Adjust Balance</a>
+        </li>
+
+        <!-- Reports & Content -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Reports' %}active{% endif %}" href="admin_reports.html">
+                <i class="fas fa-chart-bar"></i> Reports
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Content' %}active{% endif %}" href="admin_content.html">
+                <i class="fas fa-file-alt"></i> Content
+            </a>
+        </li>
+
+        <!-- Security & Monitoring -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Security' %}active{% endif %}" href="admin_security_center.html">
+                <i class="fas fa-shield-alt"></i> Security
+            </a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_logs.html">Logs</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_activity_monitor.html">Activity Monitor</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_notifications.html">Notifications</a>
+        </li>
+
+        <!-- Admin & Settings -->
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Settings' %}active{% endif %}" href="admin_settings.html">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_system_settings.html">System Settings</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_email_settings.html">Email Settings</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_payment_settings.html">Payment Settings</a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_maintenance_mode.html">Maintenance Mode</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if nav_active == 'Roles' %}active{% endif %}" href="admin_roles.html">
+                <i class="fas fa-user-tag"></i> Roles & Admins
+            </a>
+        </li>
+        <li class="nav-item ps-4">
+            <a class="nav-link nav-sublink" href="admin_manage_admins.html">Manage Admins</a>
+        </li>
+
+        <!-- Profile (User Section) -->
+        <li class="nav-item mt-3 border-top pt-3">
+            <a class="nav-link text-primary" href="admin_profile.html">
+                <i class="fas fa-user-circle"></i> My Profile
+            </a>
+        </li>
+    </ul>
+</nav>

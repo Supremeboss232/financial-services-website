@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Insurance - Finanza</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            <div class="col-lg-6 px-5 text-start">
+                <small><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</small>
+                <small class="ms-4"><i class="fa fa-clock text-primary me-2"></i>9.00 am - 9.00 pm</small>
+            </div>
+            <div class="col-lg-6 px-5 text-end">
+                <small><i class="fa fa-envelope text-primary me-2"></i>info@example.com</small>
+                <small class="ms-4"><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</small>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="/user/dashboard" class="navbar-brand ms-4 ms-lg-0">
+                <img src="" alt="Finanza" height='50px'>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="/user/dashboard" class="nav-item nav-link">Dashboard</a>
+                    <a href="/user/about" class="nav-item nav-link">About</a>
+                    <a href="/user/service" class="nav-item nav-link">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/project" class="dropdown-item">Projects</a>
+                            <a href="/user/features" class="dropdown-item">Features</a>
+                            <a href="/user/team" class="dropdown-item">Team</a>
+                            <a href="/user/testimonial" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <a href="/user/contact" class="nav-item nav-link">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Account</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/account" class="dropdown-item">Settings</a>
+                            <a href="/logout" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Financial Products</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/deposits" class="dropdown-item">Deposits</a>
+                            <a href="/user/loans" class="dropdown-item">Loans</a>
+                            <a href="/user/investments" class="dropdown-item">Investments</a>
+                            <a href="/user/cards" class="dropdown-item">Cards</a>
+                            <a href="/user/insurance" class="dropdown-item active">Insurance</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none d-lg-flex ms-2">
+                    <a class="tp-btn btn btn-primary py-3 px-5 animated slideInLeft" href="/user/dashboard">
+                        My Dashboard <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h1 class="display-4 pb-3 animated slideInDown">Insurance Services</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="/user/dashboard">Home</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Insurance</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="mb-4">Protect What Matters Most with Finanza Insurance</h1>
+                    <p class="mb-4">We offer a comprehensive range of insurance solutions tailored to protect your home, health, life, and assets. Explore our plans to find the perfect coverage for your needs and lifestyle.</p>
+
+                    <!-- Your Active Insurance Policies -->
+                    <h2 class="mb-4 mt-5">Your Active Insurance Policies</h2>
+                    <div class="table-responsive mb-5">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Policy Name</th>
+                                    <th scope="col">Coverage</th>
+                                    <th scope="col">Premium</th>
+                                    <th scope="col">Next Due</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Example rows - these would be populated dynamically from the backend -->
+                                <tr>
+                                    <td>Home Shield Platinum</td>
+                                    <td>$500,000 Property, $100,000 Liability</td>
+                                    <td>$120.00/month</td>
+                                    <td>2025-12-20</td>
+                                    <td>Active</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary">View Policy</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Life Secure Gold</td>
+                                    <td>$1,000,000 Term Life</td>
+                                    <td>$50.00/month</td>
+                                    <td>2025-12-15</td>
+                                    <td>Active</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary">View Policy</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Auto Care Plus</td>
+                                    <td>Comprehensive, Collision, Third-Party</td>
+                                    <td>$80.00/month</td>
+                                    <td>2025-12-25</td>
+                                    <td>Active</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary">View Policy</a></td>
+                                </tr>
+                                <!-- End example rows -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Explore Insurance Plans Section -->
+                    <h2 class="mb-4 mt-5">Explore Our Insurance Plans</h2>
+                    <div class="accordion" id="insuranceAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingHome">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHome" aria-expanded="true" aria-controls="collapseHome">
+                                    Home Insurance
+                                </button>
+                            </h2>
+                            <div id="collapseHome" class="accordion-collapse collapse show" aria-labelledby="headingHome" data-bs-parent="#insuranceAccordion">
+                                <div class="accordion-body">
+                                    <p>Comprehensive coverage for your home and personal belongings against perils like fire, theft, and natural disasters. Customizable options to suit your specific needs.</p>
+                                    <ul>
+                                        <li>Property damage and dwelling coverage</li>
+                                        <li>Personal liability protection</li>
+                                        <li>Additional living expenses</li>
+                                    </ul>
+                                    <button class="btn btn-primary mt-3">Get a Quote</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingLife">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLife" aria-expanded="false" aria-controls="collapseLife">
+                                    Life Insurance
+                                </button>
+                            </h2>
+                            <div id="collapseLife" class="accordion-collapse collapse" aria-labelledby="headingLife" data-bs-parent="#insuranceAccordion">
+                                <div class="accordion-body">
+                                    <p>Secure your family's financial future with our flexible life insurance plans. Choose from term life, whole life, and universal life options.</p>
+                                    <ul>
+                                        <li>Financial protection for your loved ones</li>
+                                        <li>Coverage for various life stages</li>
+                                        <li>Potential for cash value growth</li>
+                                    </ul>
+                                    <button class="btn btn-primary mt-3">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingAuto">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAuto" aria-expanded="false" aria-controls="collapseAuto">
+                                    Auto Insurance
+                                </button>
+                            </h2>
+                            <div id="collapseAuto" class="accordion-collapse collapse" aria-labelledby="headingAuto" data-bs-parent="#insuranceAccordion">
+                                <div class="accordion-body">
+                                    <p>Protect your vehicle and yourself on the road with our reliable auto insurance. Options include comprehensive, collision, and liability coverage.</p>
+                                    <ul>
+                                        <li>Collision and comprehensive coverage</li>
+                                        <li>Bodily injury and property damage liability</li>
+                                        <li>Uninsured/underinsured motorist coverage</li>
+                                    </ul>
+                                    <button class="btn btn-primary mt-3">Get a Quote</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingHealth">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHealth" aria-expanded="false" aria-controls="collapseHealth">
+                                    Health Insurance
+                                </button>
+                            </h2>
+                            <div id="collapseHealth" class="accordion-collapse collapse" aria-labelledby="headingHealth" data-bs-parent="#insuranceAccordion">
+                                <div class="accordion-body">
+                                    <p>Access quality healthcare with our range of health insurance plans. Covers medical expenses, hospital stays, and preventive care.</p>
+                                    <ul>
+                                        <li>Doctor visits and prescriptions</li>
+                                        <li>Hospitalization and emergency care</li>
+                                        <li>Wellness programs</li>
+                                    </ul>
+                                    <button class="btn btn-primary mt-3">Get a Quote</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-light rounded p-4 mb-4">
+                        <h4 class="mb-4">File a Claim</h4>
+                        <p class="mb-3">Need to file a claim? Use our easy online process or contact our claims department directly.</p>
+                        <a href="#" class="btn btn-primary w-100 py-3 mb-3">Start a New Claim</a>
+                        <p class="mb-3">Claims Hotline:</p>
+                        <p class="mb-0"><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</p>
+                    </div>
+                    <div class="bg-light rounded p-4">
+                        <h4 class="mb-4">Need Personalized Advice?</h4>
+                        <p>Our insurance specialists can help you understand your options and choose the best plans.</p>
+                        <p><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</p>
+                        <p><i class="fa fa-envelope text-primary me-2"></i>insurance@finanza.com</p>
+                        <a class="btn btn-secondary w-100 py-3" href="/user/contact">Talk to an Agent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Our Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Main Street, New York, NY 10001</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (212) 555-1234</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>contact@finanza.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Services</h4>
+                    <a class="btn btn-link" href="/user/financial_planning">Financial Planning</a>
+                    <a class="btn btn-link" href="/user/investments">Cash Investment</a>
+                    <a class="btn btn-link" href="/user/service">Financial Consultancy</a>
+                    <a class="btn btn-link" href="/user/loans">Business Loans</a>
+                    <a class="btn btn-link" href="/user/business_analysis">Business Analysis</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="/user/dashboard">Home</a>
+                    <a class="btn btn-link" href="/user/contact">Contact</a>
+                    <a class="btn btn-link" href="/user/service">Our Services</a>
+                    <a class="btn btn-link" href="#">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Newsletter</h4>
+                    <p>Stay updated with our latest news and insights. Subscribe to our newsletter.</p>
+                    <div class="position-relative w-100">
+                        <input class="form-control bg-white border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

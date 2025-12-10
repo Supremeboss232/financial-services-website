@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}User Assets{% endblock %}
+
+{% set nav_active = 'Users' %}
+
+{% block content %}
+<!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="container">
+            <h1 class="display-4 pb-3 mb-0 animated slideInDown">User Assets</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">User Assets</p>
+                    <h1 class="display-5 mb-5">User Assets</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name / Email</th>
+                                    <th>Account #</th>
+                                    <th>Balance</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userAssetsBody">
+                                <tr><td colspan="5" class="text-center text-muted">Loading users...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-3 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+<script src="/js/admin-guard.js"></script>
+<script src="/js/admin-client.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async function(){
+        try {
+            const users = await window.adminClient.getJSON('/api/admin/users');
+            const tbody = document.getElementById('userAssetsBody');
+            if (!Array.isArray(users) || users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No users found</td></tr>';
+                return;
+            }
+            tbody.innerHTML = '';
+            users.forEach(u => {
+                const acc = u.account_number || `ACC${u.id}`;
+                const balance = typeof u.balance === 'number' ? u.balance.toFixed(2) : (u.balance || 0);
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${u.id}</td>
+                        <td>${u.full_name || u.name || ''}<br><small>${u.email || ''}</small></td>
+                        <td>${acc}</td>
+                        <td>$${balance}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="/admin/user_details?user_id=${u.id}&tab=assets">View Assets</a>
+                        </td>
+                    </tr>
+                `;
+            });
+        } catch (err) {
+            console.error(err);
+            document.getElementById('userAssetsBody').innerHTML = '<tr><td colspan="5" class="text-danger">Failed to load users</td></tr>';
+        }
+    });
+</script>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Logs{% endblock %}
+
+{% set nav_active = 'Security' %}
+
+{% block content %}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5">
+    <div class="container">
+        <h1 class="display-4 pb-3 mb-0 animated slideInDown">System Logs</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Admin Content Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4 mb-5">
+            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Activity Logs</p>
+                <h1 class="display-5 mb-5">System Logs</h1>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+                <button class="btn btn-primary" onclick="refreshLogs()"><i class="fa fa-sync me-2"></i>Refresh Logs</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Timestamp</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>IP Address</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsTableBody">
+                            <tr><td colspan="6" class="text-center text-muted">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Admin Content End -->
+
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-3 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/admin-guard.js"></script>
+    <script src="/js/admin-client.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function(){
+            try {
+                // Try admin logs endpoint; if not present, call generic `/logs` (graceful fallback)
+                let res = await window.adminClient.adminFetch('/api/admin/logs');
+                if (!res.ok) res = await window.adminClient.adminFetch('/api/logs');
+                if (!res.ok) throw res;
+                const logs = await res.json();
+                const tbody = document.getElementById('logsTableBody');
+                if (!Array.isArray(logs) || logs.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">No logs found</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = '';
+                logs.forEach(l => {
+                    const time = l.timestamp || l.created_at || l.time || '';
+                    const message = l.message || l.msg || JSON.stringify(l || '');
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${l.id || ''}</td>
+                            <td>${time}</td>
+                            <td>${l.level || l.severity || ''}</td>
+                            <td>${message}</td>
+                        </tr>
+                    `;
+                });
+            } catch (err) {
+                console.error(err);
+                document.getElementById('logsTableBody').innerHTML = '<tr><td colspan="4" class="text-danger">Failed to load logs</td></tr>';
+            }
+        });
+    </script>
+    <script>
+        const token = localStorage.getItem('access_token');
+        async function loadLogs() {
+            try {
+                const response = await fetch('/admin/logs', { headers: { 'Authorization': `Bearer ${token}` } });
+                const logs = await response.json();
+                const tbody = document.getElementById('logsTableBody');
+                tbody.innerHTML = logs.map(log => `
+                    <tr>
+                        <td>${log.id}</td>
+                        <td>${log.timestamp}</td>
+                        <td>${log.user_email || '-'}</td>
+                        <td>${log.action}</td>
+                        <td>${log.ip_address || '-'}</td>
+                        <td><span class="badge bg-${log.status === 'Success' ? 'success' : 'danger'}">${log.status}</span></td>
+                    </tr>
+                `).join('') || '<tr><td colspan="6" class="text-center text-muted">No logs found</td></tr>';
+            } catch (error) {
+                document.getElementById('logsTableBody').innerHTML = '<tr><td colspan="6" class="text-danger">Failed to load logs</td></tr>';
+            }
+        }
+        function refreshLogs() { loadLogs(); }
+        document.addEventListener('DOMContentLoaded', loadLogs);
+    </script>
+</body>
+
+</html>
+{% endblock %}

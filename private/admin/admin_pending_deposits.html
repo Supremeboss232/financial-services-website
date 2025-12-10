@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Pending Deposits{% endblock %}
+
+{% set nav_active = 'Transactions' %}
+
+{% block content %}
+<!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="container">
+            <h1 class="display-4 pb-3 mb-0 animated slideInDown">Pending Deposits</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Deposit Requests</p>
+                    <h1 class="display-5 mb-5">Pending Deposits</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-3 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/admin-guard.js"></script>
+    <script src="/js/admin-client.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function(){
+            try {
+                const res = await window.adminClient.getJSON('/api/admin/transactions');
+                const deposits = (Array.isArray(res) ? res : []).filter(t => (t.transaction_type||t.type||'').toLowerCase().includes('deposit') && (t.status||'').toLowerCase().includes('pending'));
+                const tbody = document.getElementById('pendingDepositsBody');
+                if (!deposits.length) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No pending deposits</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = '';
+                deposits.forEach(d => {
+                    const date = d.created_at ? new Date(d.created_at).toLocaleString() : (d.date||'');
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${d.id}</td>
+                            <td>${d.user_id || (d.user && (d.user.email || d.user.full_name)) || ''}</td>
+                            <td>$${parseFloat(d.amount||0).toFixed(2)}</td>
+                            <td>${d.currency || ''}</td>
+                            <td>${date}</td>
+                            <td>
+                                <button class="btn btn-sm btn-success" onclick="approveDeposit(${d.id})">Approve</button>
+                                <button class="btn btn-sm btn-danger" onclick="rejectDeposit(${d.id})">Reject</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (err) {
+                console.error(err);
+                document.getElementById('pendingDepositsBody').innerHTML = '<tr><td colspan="6" class="text-danger">Failed to load transactions</td></tr>';
+            }
+        });
+
+        window.approveDeposit = async function(id){
+            try {
+                const res = await window.adminClient.adminFetch(`/api/admin/transactions/${id}/retry`, { method: 'POST' });
+                if (res.ok) location.reload(); else alert('Failed to approve');
+            } catch(e){ alert('Network error'); }
+        };
+
+        window.rejectDeposit = async function(id){
+            if (!confirm('Reject this deposit?')) return;
+            try {
+                // fallback: call adjust-balance with negative or delete transaction depending on API availability
+                const res = await window.adminClient.adminFetch(`/api/admin/transactions/${id}`, { method: 'DELETE' });
+                if (res.ok) location.reload(); else alert('Failed to reject');
+            } catch(e){ alert('Network error'); }
+        };
+    </script>
+</body>
+
+</html>
+{% endblock %}

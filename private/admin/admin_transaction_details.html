@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction Details{% endblock %}
+{% block page_title %}Transaction Details{% endblock %}
+
+{% block back_button %}
+<a href="transactions.html" class="btn btn-secondary mb-3">&larr; Back to Transactions</a>
+{% endblock %}
+
+{% block content %}
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Transaction Info</p>
+                    <h1 class="display-5 mb-5">Transaction Details</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card p-4">
+                        <div id="transactionDetails">Loading transaction...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+{% block scripts %}
+<script src="/js/admin-client.js"></script>
+<script>
+    (function(){
+        function qs(name){ return new URLSearchParams(window.location.search).get(name); }
+        async function loadTransaction(){
+            const id = qs('transaction_id');
+            const el = document.getElementById('transactionDetails');
+            if (!id) { el.innerHTML = '<div class="text-danger">No transaction specified</div>'; return; }
+            try {
+                const res = await window.adminClient.adminFetch(`/api/admin/transactions/${id}`);
+                if (!res.ok) { el.innerHTML = '<div class="text-danger">Transaction not found</div>'; return; }
+                const tx = await res.json();
+                el.innerHTML = `
+                    <p><strong>ID:</strong> ${tx.id}</p>
+                    <p><strong>User:</strong> ${tx.user_id || (tx.user && (tx.user.email || tx.user.full_name)) || ''}</p>
+                    <p><strong>Type:</strong> ${tx.transaction_type || tx.type || ''}</p>
+                    <p><strong>Amount:</strong> $${tx.amount}</p>
+                    <p><strong>Status:</strong> ${tx.status || ''}</p>
+                    <p><strong>Date:</strong> ${tx.created_at || ''}</p>
+                    <pre>${tx.description || ''}</pre>
+                `;
+            } catch (err) { console.error(err); el.innerHTML = '<div class="text-danger">Failed to load transaction</div>'; }
+        }
+        document.addEventListener('DOMContentLoaded', loadTransaction);
+    })();
+</script>
+{% endblock %}
+{% endblock %}

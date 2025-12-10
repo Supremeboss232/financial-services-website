@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYC Verification Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>KYC Verification Form</h1>
+    <p>Please provide the required information for KYC verification.</p>
+
+    <form action="/api/v1/kyc/verify" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2>Personal Info</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="full_name">Full Name:</label>
+              <input type="text" class="form-control" id="full_name" name="full_name" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="dob">Date of Birth:</label>
+              <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="nationality">Nationality:</label>
+              <input type="text" class="form-control" id="nationality" name="nationality" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="gender">Gender:</label>
+              <select id="gender" name="gender" class="form-control" required>
+                <option value="" selected>Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Residential Address:</label>
+            <textarea id="address" name="address" class="form-control" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="employment">Employment / Source of Income:</label>
+            <input type="text" class="form-control" id="employment" name="employment" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2>Identity Documents</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="id_type">Document Type:</label>
+              <select id="id_type" name="document_type" class="form-control" required>
+                <option value="" selected>Select...</option>
+                <option value="national_id">National ID</option>
+                <option value="passport">Passport</option>
+                <option value="driver_license">Driver's License</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="document_number">Document Number:</label>
+              <input type="text" class="form-control" id="document_number" name="document_number" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="id_front">ID Front (upload):</label>
+              <input type="file" class="form-control-file" id="id_front" name="file" accept="image/*" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="id_back">ID Back (upload):</label>
+              <input type="file" class="form-control-file" id="id_back" name="id_back" accept="image/*" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="expiry_date">Expiry Date:</label>
+            <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2>Verification</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="selfie">Selfie (upload):</label>
+            <input type="file" class="form-control-file" id="selfie" name="selfie" accept="image/*" required>
+          </div>
+          <div class="form-group">
+            <label for="proof_of_address_type">Proof of Address Type:</label>
+            <select id="proof_of_address_type" name="proof_of_address_type" class="form-control" required>
+              <option value="" selected>Select...</option>
+              <option value="utility_bill">Utility Bill</option>
+              <option value="bank_statement">Bank Statement</option>
+              <option value="government_proof">Government-issued Proof</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="proof_of_address">Proof of Address (upload):</label>
+            <input type="file" class="form-control-file" id="proof_of_address" name="proof_of_address" accept="image/*,application/pdf" required>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit for Verification</button>
+    </form>
+  </div>
+</body>
+</html>

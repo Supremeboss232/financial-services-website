@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Investments - Finanza</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            <div class="col-lg-6 px-5 text-start">
+                <small><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</small>
+                <small class="ms-4"><i class="fa fa-clock text-primary me-2"></i>9.00 am - 9.00 pm</small>
+            </div>
+            <div class="col-lg-6 px-5 text-end">
+                <small><i class="fa fa-envelope text-primary me-2"></i>info@example.com</small>
+                <small class="ms-4"><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</small>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="/user/dashboard" class="navbar-brand ms-4 ms-lg-0">
+                <img src="" alt="Finanza" height='50px'>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="/user/dashboard" class="nav-item nav-link">Dashboard</a>
+                    <a href="/user/about" class="nav-item nav-link">About</a>
+                    <a href="/user/service" class="nav-item nav-link">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/project" class="dropdown-item">Projects</a>
+                            <a href="/user/feature" class="dropdown-item">Features</a>
+                            <a href="/user/team" class="dropdown-item">Team</a>
+                            <a href="/user/testimonial" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <a href="/contact" class="nav-item nav-link">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Account</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/account" class="dropdown-item">Settings</a>
+                            <a href="/logout" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none d-lg-flex ms-2">
+                    <a class="tp-btn btn btn-primary py-3 px-5 animated slideInLeft" href="/dashboard">
+                        My Dashboard <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h1 class="display-4 pb-3 animated slideInDown">Investments</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="/user/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Investments</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="mb-4">Finanza Investment Opportunities</h1>
+                    <p class="mb-4">Explore a wide range of investment products designed to help you achieve your financial goals. Our expert team provides tailored advice and strategies for optimal returns.</p>
+
+                    <!-- User's Portfolio Summary -->
+                    <h2 class="mb-4 mt-5">Your Investment Portfolio</h2>
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6">
+                            <div class="card p-3">
+                                <h5 class="card-title">Total Portfolio Value</h5>
+                                <p class="card-text fs-3 text-primary">$<span id="portfolio-value">Loading...</span></p>
+                                <p class="card-text">Overall Gain/Loss: <span id="portfolio-gain" class="text-success">+X.XX%</span></p>
+                                <a href="#" class="btn btn-sm btn-outline-primary mt-2">View Detailed Portfolio</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card p-3">
+                                <h5 class="card-title">Asset Allocation</h5>
+                                <canvas id="assetAllocationChart" style="max-height: 200px;"></canvas>
+                                <!-- Placeholder for dynamic chart data via JavaScript/API -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Investment Options -->
+                    <h2 class="mb-4 mt-5">Explore Our Investment Products</h2>
+                    <div class="accordion" id="investmentAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Asset Management
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#investmentAccordion">
+                                <div class="accordion-body">
+                                    <p>Our Asset Management provides unique portfolio Management services designed for private individuals and institutional investors seeking professional asset management expertise.</p>
+                                    <p>We offer both discretionary and non-discretionary investment options, assuring clients of professional expertise in identifying viable investments across asset classes for optimum return.</p>
+                                    <h6>Key Features:</h6>
+                                    <ul>
+                                        <li>Minimum initial deposit of $500,000.00 (subsequent investments in multiples of $100,000.00)</li>
+                                        <li>Initial duration of 3 years with realization options (with prior notice)</li>
+                                        <li>Quarterly reports on investment performance</li>
+                                        <li>Maximum bridge finance of 70% of investment at prevailing market costs</li>
+                                    </ul>
+                                    <button class="btn btn-primary mt-3">Invest in Asset Management</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Issuing House (Capital Raising)
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#investmentAccordion">
+                                <div class="accordion-body">
+                                    <p>Our capital raising services assist businesses in accessing financial markets to raise capital through various instruments such as equity and debt.</p>
+                                    <p>We provide comprehensive advisory, structuring, and placement services to ensure successful capital formation.</p>
+                                    <button class="btn btn-primary mt-3">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Business & Financial Advisory
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#investmentAccordion">
+                                <div class="accordion-body">
+                                    <p>Strategic advice and insights to help businesses make informed financial decisions. Our services include mergers and acquisitions advisory, corporate restructuring, and financial modeling.</p>
+                                    <button class="btn btn-primary mt-3">Request Consultation</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Project Finance
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#investmentAccordion">
+                                <div class="accordion-body">
+                                    <p>Specialized financing solutions for large-scale projects, often involving complex financial structures. We provide expertise in structuring, arranging, and advising on project finance transactions across various sectors.</p>
+                                    <button class="btn btn-primary mt-3">Inquire About Project Finance</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-light rounded p-4 mb-4">
+                        <h4 class="mb-4">Investment Trends & News</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Market rallies amid positive economic data. <small class="text-muted float-end">2 hours ago</small></li>
+                            <li class="list-group-item">Tech stocks continue upward momentum. <small class="text-muted float-end">Yesterday</small></li>
+                            <li class="list-group-item">New opportunities in sustainable energy. <small class="text-muted float-end">2 days ago</small></li>
+                        </ul>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Read More News</a>
+                    </div>
+                    <div class="bg-light rounded p-4">
+                        <h4 class="mb-4">Speak to an Advisor</h4>
+                        <p>Get personalized investment advice from our certified financial planners.</p>
+                        <p><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</p>
+                        <p><i class="fa fa-envelope text-primary me-2"></i>investments@finanza.com</p>
+                        <a class="btn btn-primary w-100 py-3" href="/contact">Schedule a Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Our Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Main Street, New York, NY 10001</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (212) 555-1234</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>contact@finanza.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Services</h4>
+                    <a class="btn btn-link" href="/user/financial-planning">Financial Planning</a>
+                    <a class="btn btn-link" href="/user/investments">Cash Investment</a>
+                    <a class="btn btn-link" href="/user/service">Financial Consultancy</a>
+                    <a class="btn btn-link" href="/user/loans">Business Loans</a>
+                    <a class="btn btn-link" href="/user/business-analysis">Business Analysis</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="/user/about">About Us</a>
+                    <a class="btn btn-link" href="/user/contact">Contact Us</a>
+                    <a class="btn btn-link" href="/user/service">Our Services</a>
+                    <a class="btn btn-link" href="#">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Newsletter</h4>
+                    <p>Stay updated with our latest news and insights. Subscribe to our newsletter.</p>
+                    <div class="position-relative w-100">
+                        <input class="form-control bg-white border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+    <!-- Chart.js for portfolio chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Placeholder values for demonstration
+            const portfolioValue = 150000.75;
+            const portfolioGain = 7.25; // Percentage
+
+            document.getElementById('portfolio-value').innerText = portfolioValue.toFixed(2);
+            document.getElementById('portfolio-gain').innerText = (portfolioGain > 0 ? '+' : '') + portfolioGain.toFixed(2) + '%';
+            document.getElementById('portfolio-gain').classList.add(portfolioGain > 0 ? 'text-success' : 'text-danger');
+
+
+            // Asset Allocation Chart (Example using Chart.js)
+            var ctx = document.getElementById('assetAllocationChart').getContext('2d');
+            var assetAllocationChart = new Chart(ctx, {
+                type: 'doughnut', // or 'pie'
+                data: {
+                    labels: ['Stocks', 'Bonds', 'Real Estate', 'Mutual Funds', 'Cash'],
+                    datasets: [{
+                        label: 'Asset Allocation',
+                        data: [40, 25, 15, 10, 10], // Placeholder data in percentage
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%', // For doughnut chart
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: false,
+                            text: 'Your Asset Allocation'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

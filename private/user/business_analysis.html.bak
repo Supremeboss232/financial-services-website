@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Finanza - Business Analysis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
+            <div class="col-lg-6 px-5 text-start">
+                <small><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</small>
+                <small class="ms-4"><i class="fa fa-clock text-primary me-2"></i>9.00 am - 9.00 pm</small>
+            </div>
+            <div class="col-lg-6 px-5 text-end">
+                <small><i class="fa fa-envelope text-primary me-2"></i>info@example.com</small>
+                <small class="ms-4"><i class="fa fa-phone-alt text-primary me-2"></i>+012 345 6789</small>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="/user/dashboard" class="navbar-brand ms-4 ms-lg-0">
+                <img src="/img/logo.png" alt="Finanza" height='50px'>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="/user/dashboard" class="nav-item nav-link">Dashboard</a>
+                    <a href="/user/about" class="nav-item nav-link">About</a>
+                    <a href="/user/service" class="nav-item nav-link">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/project" class="dropdown-item">Projects</a>
+                            <a href="/user/feature" class="dropdown-item">Features</a>
+                            <a href="/user/team" class="dropdown-item">Team</a>
+                            <a href="/user/testimonial" class="dropdown-item">Testimonial</a>
+                        </div>
+                    </div>
+                    <a href="/user/contact" class="nav-item nav-link">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">My Account</a>
+                        <div class="dropdown-menu border-light m-0">
+                            <a href="/user/account" class="dropdown-item">Settings</a>
+                            <a href="/logout" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-none d-lg-flex ms-2">
+                    <a class="tp-btn btn btn-primary py-3 px-5 animated slideInLeft" href="/user/dashboard">
+                        My Dashboard <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <h1 class="display-4 pb-3 mb-4 animated slideInDown">Business Analysis</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb pb-3 mb-0">
+                    <li class="breadcrumb-item"><a class="text-light" href="/user/dashboard">Home</a></li>
+                    <li class="breadcrumb-item text-light active" aria-current="page">Business Analysis</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Business Analysis Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Business Insights</p>
+                <h1 class="display-5 mb-5">Powerful Analytics for Your Business</h1>
+            </div>
+            <div class="row g-4">
+                <!-- Overview Section -->
+                <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-light rounded p-4">
+                        <h4 class="mb-3">Overview</h4>
+                        <p>Gain a comprehensive understanding of your business's financial health with key performance indicators and interactive charts.</p>
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4">
+                                <div class="bg-white rounded p-3 text-center">
+                                    <h5>Total Revenue</h5>
+                                    <p class="display-6 text-primary">$150,000</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-white rounded p-3 text-center">
+                                    <h5>Net Profit</h5>
+                                    <p class="display-6 text-success">$35,000</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-white rounded p-3 text-center">
+                                    <h5>Growth Rate</h5>
+                                    <p class="display-6 text-info">12%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="revenueChart" width="800" height="300"></canvas>
+                        <a href="#" class="btn btn-primary mt-3">View Full Dashboard</a>
+                    </div>
+                </div>
+
+                <!-- Reports Section -->
+                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-light rounded p-4">
+                        <h4 class="mb-3">Reports</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Monthly Sales Report
+                                <a href="#" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Profit & Loss Statement (Q3)
+                                <a href="#" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Expense Breakdown
+                                <a href="#" class="btn btn-sm btn-outline-primary">Download CSV</a>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-primary mt-3">All Reports</a>
+                    </div>
+                </div>
+
+                <!-- Custom Analytics -->
+                <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-light rounded p-4">
+                        <h4 class="mb-3">Custom Analytics</h4>
+                        <p>Create and save custom reports tailored to your specific business needs.</p>
+                        <form>
+                            <div class="mb-3">
+                                <label for="reportType" class="form-label">Report Type</label>
+                                <select class="form-select" id="reportType">
+                                    <option selected>Select an option</option>
+                                    <option value="sales_by_region">Sales by Region</option>
+                                    <option value="customer_segmentation">Customer Segmentation</option>
+                                    <option value="product_performance">Product Performance</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dateRange" class="form-label">Date Range</label>
+                                <input type="text" class="form-control" id="dateRange" placeholder="e.g., Last 30 days">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Generate Report</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Business Analysis Content End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Our Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Main Street, New York, NY 10001</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (212) 555-1234</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>contact@finanza.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Services</h4>
+                    <a class="btn btn-link" href="/user/financial_planning">Financial Planning</a>
+                    <a class="btn btn-link" href="/user/investments">Cash Investment</a>
+                    <a class="btn btn-link" href="/user/service">Financial Consultancy</a>
+                    <a class="btn btn-link" href="/user/loans">Business Loans</a>
+                    <a class="btn btn-link" href="/user/business_analysis">Business Analysis</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="/user/about">About Us</a>
+                    <a class="btn btn-link" href="/user/contact">Contact Us</a>
+                    <a class="btn btn-link" href="/user/service">Our Services</a>
+                    <a class="btn btn-link" href="#">Terms & Condition</a>
+                    <a class="btn btn-link" href="">Support</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Newsletter</h4>
+                    <p>Stay updated with our latest news and insights. Subscribe to our newsletter.</p>
+                    <div class="position-relative w-100">
+                        <input class="form-control bg-white border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script>
+    document.addEventListener('click', function(e){
+        const a = e.target.closest('a');
+        if(!a) return;
+        const href = a.getAttribute('href');
+        if(!href) return;
+        if(href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
+        if(href.startsWith('/')){
+            if(!href.startsWith('/user')){
+                e.preventDefault();
+                alert('Navigation outside the user area is blocked.');
+            }
+        }
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Placeholder for Chart.js
+        const ctxRevenue = document.getElementById('revenueChart');
+        new Chart(ctxRevenue, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Monthly Revenue',
+                    data: [10000, 12000, 15000, 13000, 17000, 18000, 20000],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgb(75, 192, 192)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

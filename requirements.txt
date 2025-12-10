@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-multipart
+jinja2 # For FastAPI templates
+sqlalchemy[asyncpg]
+pydantic[email]
+pydantic-settings
+passlib[bcrypt]
+bcrypt>=3.2.2,<4.0.0
+python-jose[cryptography]
+fastapi-mail

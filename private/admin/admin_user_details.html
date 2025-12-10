@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}User Details{% endblock %}
+{% block page_title %}User Details{% endblock %}
+
+{% block back_button %}
+<a href="admin_users.html" class="btn btn-secondary mb-3">&larr; Back to Users</a>
+{% endblock %}
+
+{% block content %}
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">User Information</p>
+                    <h1 class="display-5 mb-5">User Details</h1>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <ul class="nav nav-tabs" id="userDetailTabs" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-tab="profile" href="#">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" data-tab="loans" href="#">Loans</a></li>
+                        <li class="nav-item"><a class="nav-link" data-tab="deposits" href="#">Deposits</a></li>
+                        <li class="nav-item"><a class="nav-link" data-tab="investments" href="#">Investments</a></li>
+                        <li class="nav-item"><a class="nav-link" data-tab="kyc" href="#">KYC</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="userDetailContent">
+                        <div id="profile" class="tab-pane active">
+                            <h4>Profile</h4>
+                            <div id="profileContent">Loading...</div>
+                        </div>
+                        <div id="loans" class="tab-pane" style="display:none;">
+                            <h4>Loans</h4>
+                            <div id="loansContent">Loading...</div>
+                        </div>
+                        <div id="deposits" class="tab-pane" style="display:none;">
+                            <h4>Deposits</h4>
+                            <div id="depositsContent">Loading...</div>
+                        </div>
+                        <div id="investments" class="tab-pane" style="display:none;">
+                            <h4>Investments</h4>
+                            <div id="investmentsContent">Loading...</div>
+                        </div>
+                        <div id="kyc" class="tab-pane" style="display:none;">
+                            <h4>KYC</h4>
+                            <div id="kycContent">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+{% endblock %}
+{% block scripts %}
+<script src="/js/admin-client.js"></script>
+<script>
+    (function(){
+        function qsParam(name){
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        async function loadProfile(userId){
+            try {
+                // get all users and find the one with id
+                const users = await window.adminClient.getJSON('/api/admin/users');
+                const user = users.find(u => String(u.id) === String(userId));
+                const el = document.getElementById('profileContent');
+                if (!user) { el.innerHTML = '<div class="text-danger">User not found</div>'; return; }
+                el.innerHTML = `
+                    <p><strong>ID:</strong> ${user.id}</p>
+                    <p><strong>Name:</strong> ${user.full_name || user.name || ''}</p>
+                    <p><strong>Email:</strong> ${user.email || ''}</p>
+                    <p><strong>Account #:</strong> ${user.account_number || ''}</p>
+                    <p><strong>Balance:</strong> $${(user.balance||0)}</p>
+                `;
+            } catch (err) { console.error(err); document.getElementById('profileContent').innerHTML = '<div class="text-danger">Failed to load profile</div>'; }
+        }
+
+        async function loadLoans(userId){
+            try {
+                const loans = await window.adminClient.getJSON(`/api/admin/users/${userId}/loans`);
+                const el = document.getElementById('loansContent');
+                if (!Array.isArray(loans) || loans.length === 0) { el.innerHTML = '<div class="text-muted">No loans found</div>'; return; }
+                el.innerHTML = '<ul>' + loans.map(l => `<li>Loan #${l.id}: $${(l.amount||0)} - ${l.status||''}</li>`).join('') + '</ul>';
+            } catch (err) { console.error(err); document.getElementById('loansContent').innerHTML = '<div class="text-danger">Failed to load loans</div>'; }
+        }
+
+        async function loadDeposits(userId){
+            try {
+                const deposits = await window.adminClient.getJSON(`/api/admin/users/${userId}/deposits`);
+                const el = document.getElementById('depositsContent');
+                if (!Array.isArray(deposits) || deposits.length === 0) { el.innerHTML = '<div class="text-muted">No deposits found</div>'; return; }
+                el.innerHTML = '<ul>' + deposits.map(d => `<li>Deposit #${d.id}: $${(d.amount||0)} - ${d.status||''}</li>`).join('') + '</ul>';
+            } catch (err) { console.error(err); document.getElementById('depositsContent').innerHTML = '<div class="text-danger">Failed to load deposits</div>'; }
+        }
+
+        async function loadInvestments(userId){
+            try {
+                const inv = await window.adminClient.getJSON(`/api/admin/users/${userId}/investments`);
+                const el = document.getElementById('investmentsContent');
+                if (!Array.isArray(inv) || inv.length === 0) { el.innerHTML = '<div class="text-muted">No investments found</div>'; return; }
+                el.innerHTML = '<ul>' + inv.map(i => `<li>Investment #${i.id}: ${i.investment_type || ''} - $${(i.amount||0)}</li>`).join('') + '</ul>';
+            } catch (err) { console.error(err); document.getElementById('investmentsContent').innerHTML = '<div class="text-danger">Failed to load investments</div>'; }
+        }
+
+        async function loadKyc(userId){
+            try {
+                const kyc = await window.adminClient.getJSON(`/api/admin/users/${userId}/kyc`);
+                const el = document.getElementById('kycContent');
+                if (!Array.isArray(kyc) || kyc.length === 0) { el.innerHTML = '<div class="text-muted">No KYC submissions</div>'; return; }
+                el.innerHTML = '<ul>' + kyc.map(k => `<li>KYC #${k.id}: ${k.document_type || ''} - ${k.status || ''}</li>`).join('') + '</ul>';
+            } catch (err) { console.error(err); document.getElementById('kycContent').innerHTML = '<div class="text-danger">Failed to load KYC</div>'; }
+        }
+
+        function showTab(tab){
+            document.querySelectorAll('#userDetailContent .tab-pane').forEach(el => { el.style.display = 'none'; el.classList.remove('active'); });
+            document.querySelectorAll('#userDetailTabs .nav-link').forEach(n => n.classList.remove('active'));
+            const pane = document.getElementById(tab);
+            if (pane) { pane.style.display = ''; pane.classList.add('active'); }
+            const link = document.querySelector(`#userDetailTabs .nav-link[data-tab="${tab}"]`);
+            if (link) link.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', async function(){
+            const userId = qsParam('user_id');
+            const tab = qsParam('tab') || 'profile';
+            if (!userId) { document.getElementById('userDetailContent').innerHTML = '<div class="text-danger">No user specified</div>'; return; }
+            // initial load for the tab
+            await loadProfile(userId);
+            if (tab === 'loans') await loadLoans(userId);
+            if (tab === 'deposits') await loadDeposits(userId);
+            if (tab === 'investments') await loadInvestments(userId);
+            if (tab === 'kyc') await loadKyc(userId);
+            showTab(tab);
+
+            // tab click handlers
+            document.querySelectorAll('#userDetailTabs .nav-link').forEach(link => {
+                link.addEventListener('click', async function(e){
+                    e.preventDefault();
+                    const t = this.getAttribute('data-tab');
+                    showTab(t);
+                    if (t === 'loans') await loadLoans(userId);
+                    if (t === 'deposits') await loadDeposits(userId);
+                    if (t === 'investments') await loadInvestments(userId);
+                    if (t === 'kyc') await loadKyc(userId);
+                });
+            });
+        });
+    })();
+</script>
+{% endblock %}

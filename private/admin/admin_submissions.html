@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Submissions{% endblock %}
+
+{% set nav_active = 'Transactions' %}
+
+{% block content %}
+<!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="container">
+            <h1 class="display-4 pb-3 mb-0 animated slideInDown">Submissions</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">User Submissions</p>
+                    <h1 class="display-5 mb-5">Submissions</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-3 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/admin-guard.js"></script>
+    <script src="/js/admin-client.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function(){
+            try {
+                const data = await window.adminClient.getJSON('/api/admin/forms');
+                const tbody = document.getElementById('submissionsTableBody');
+                if (!Array.isArray(data) || data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No submissions found</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = '';
+                data.forEach(s => {
+                    const submitted = s.submitted_at ? new Date(s.submitted_at).toLocaleString() : (s.created_at || '');
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${s.id}</td>
+                            <td>${s.form_type || s.type || ''}</td>
+                            <td>${s.user_id ? 'User #' + s.user_id : (s.user_email || '')}</td>
+                            <td>${s.data || ''}</td>
+                            <td>${submitted}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="viewSubmission(${s.id})">View</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteSubmission(${s.id})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (err) {
+                console.error(err);
+                document.getElementById('submissionsTableBody').innerHTML = '<tr><td colspan="6" class="text-danger">Failed to load submissions</td></tr>';
+            }
+        });
+
+        window.viewSubmission = function(id){
+            window.location.href = '/admin/submissions/' + id;
+        };
+
+        window.deleteSubmission = async function(id){
+            if (!confirm('Delete submission?')) return;
+            try {
+                const res = await window.adminClient.adminFetch(`/api/admin/forms/${id}`, { method: 'DELETE' });
+                if (res.ok) location.reload(); else alert('Failed to delete');
+            } catch (e) { alert('Network error'); }
+        };
+    </script>
+</body>
+
+</html>
+{% endblock %}

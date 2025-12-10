@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYC Verification</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>KYC Verification</h1>
+    <p>Please complete your Know Your Customer (KYC) verification to access all financial features.</p>
+
+    {% if kyc_status == 'not_verified' %}
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">Current Status: Not Verified</h4>
+      <p>Your account is not yet verified. Please start the verification process to get full access.</p>
+      <hr>
+      <a href="/user/kyc/verify" class="btn btn-primary">Start Verification</a>
+    </div>
+    {% elif kyc_status == 'pending' %}
+    <div class="alert alert-warning" role="alert">
+      <h4 class="alert-heading">Current Status: Pending</h4>
+      <p>Your documents are under review. We will notify you shortly.</p>
+    </div>
+    {% endif %}
+
+
+
+    <!-- Example of other statuses -->
+    <!-- <div class="alert alert-warning" role="alert">
+      <h4 class="alert-heading">Current Status: Pending</h4>
+      <p>Your documents are under review. We will notify you shortly.</p>
+    </div> -->
+  </div>
+</body>
+</html>

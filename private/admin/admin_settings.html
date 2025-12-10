@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Settings{% endblock %}
+
+{% set nav_active = 'Settings' %}
+
+{% block content %}
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="container">
+            <h1 class="display-4 pb-3 mb-0 animated slideInDown">Admin Settings</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">System Settings</p>
+                    <h1 class="display-5 mb-5">Admin Settings</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+{% endblock %}

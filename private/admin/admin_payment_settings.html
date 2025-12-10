@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Settings{% endblock %}
+
+{% set nav_active = 'Settings' %}
+
+{% block content %}
+<!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="container">
+            <h1 class="display-4 pb-3 mb-0 animated slideInDown">Payment Settings</h1>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Admin Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">Payment Configuration</p>
+                    <h1 class="display-5 mb-5">Payment Settings</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card p-4">
+                        <form id="paymentSettingsForm">
+                            <div id="paymentSettingsFields">Loading payment settings...</div>
+                            <div class="d-flex justify-content-end mt-3"><button class="btn btn-primary" type="submit">Save</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Content End -->
+
+
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-3 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Finanza</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+<script src="/js/admin-guard.js"></script>
+<script src="/js/admin-client.js"></script>
+<script>
+    (function(){
+        let endpoint = '/api/admin/payment-settings';
+
+        async function load(){
+            try {
+                let res = await window.adminClient.adminFetch(endpoint);
+                if (!res.ok) { endpoint = '/api/v1/payment-settings'; res = await window.adminClient.adminFetch(endpoint); }
+                if (!res.ok) { document.getElementById('paymentSettingsFields').innerHTML = '<div class="text-muted">Payment settings endpoint not available</div>'; return; }
+                const data = await res.json();
+                const container = document.getElementById('paymentSettingsFields'); container.innerHTML = '';
+                Object.keys(data).forEach(k => { container.innerHTML += `<div class="mb-2"><label class="form-label">${k}</label><input class="form-control" id="p_${k}" value="${data[k]||''}"></div>`; });
+            } catch (err) { console.error(err); document.getElementById('paymentSettingsFields').innerHTML = '<div class="text-danger">Failed to load</div>'; }
+        }
+
+        document.addEventListener('DOMContentLoaded', load);
+        document.getElementById('paymentSettingsForm').addEventListener('submit', async function(e){
+            e.preventDefault();
+            const payload = {};
+            document.querySelectorAll('#paymentSettingsFields [id^="p_"]').forEach(el => payload[el.id.slice(2)] = el.value);
+            try {
+                const res = await window.adminClient.adminFetch(endpoint, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+                if (res.ok) alert('Payment settings saved'); else alert('Failed to save');
+            } catch (err) { alert('Network error'); }
+        });
+    })();
+</script>
+</body>
+
+</html>
+{% endblock %}
