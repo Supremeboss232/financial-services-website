@@ -1,15 +1,13 @@
 fastapi
 uvicorn[standard]
-python-multipart
-jinja2 # For FastAPI templates
-sqlalchemy[asyncpg]
 sqlalchemy
-asyncpg # Explicitly add asyncpg for async postgres support
-alembic # For database migrations
-pydantic[email]
+asyncpg
 pydantic-settings
-passlib[bcrypt]
-bcrypt>=3.2.2,<4.0.0
-bcrypt
-python-jose[cryptography]
 fastapi-mail
+python-jose[cryptography]
+passlib[bcrypt]
+alembic
+python-multipart
+Jinja2
+websockets
+argon2-cffi
